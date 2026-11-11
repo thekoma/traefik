@@ -5,6 +5,7 @@ package plugins
 import (
 	"context"
 
+	"github.com/http-wasm/http-wasm-host-go/handler"
 	"github.com/tetratelabs/wazero"
 )
 
@@ -15,4 +16,9 @@ func InstantiateHost(ctx context.Context, runtime wazero.Runtime, mod wazero.Com
 	return func(ctx context.Context) context.Context {
 		return ctx
 	}, nil
+}
+
+// GuestContext returns nil: guests share the host module on this platform.
+func GuestContext(mod wazero.CompiledModule, settings Settings) handler.NewGuestContext {
+	return nil
 }

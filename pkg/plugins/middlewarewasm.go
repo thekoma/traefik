@@ -114,6 +114,10 @@ func (b *wasmMiddlewareBuilder) buildMiddleware(ctx context.Context, next http.H
 		handler.Logger(logs.NewWasmLogger(logger)),
 	}
 
+	if newGuestCtx := GuestContext(guestModule, b.settings); newGuestCtx != nil {
+		opts = append(opts, handler.GuestContext(newGuestCtx))
+	}
+
 	i := cfg.Interface()
 	if i != nil {
 		config, ok := i.(map[string]any)
