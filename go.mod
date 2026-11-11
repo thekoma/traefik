@@ -424,3 +424,5 @@ replace (
 // ambiguous import: found package github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http in multiple modules
 // tencentcloud uses monorepo with multimodule but the go.mod files are incomplete.
 exclude github.com/tencentcloud/tencentcloud-sdk-go v3.0.83+incompatible
+
+replace github.com/http-wasm/http-wasm-host-go => github.com/thekoma/http-wasm-host-go v0.0.0-20261111203851-a6c68de495b9
